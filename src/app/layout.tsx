@@ -3,7 +3,7 @@ import { Poppins } from "next/font/google";
 import "@/styles/globals.css";
 import SessionProvider from "@/components/providers/SessionProvider";
 import { QueryProvider } from "@/components/providers/QueryProvider";
-import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,10 +26,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <Script defer src="https://assets.onedollarstats.com/stonks.js" />
-      </head>
       <body className={`${poppins.variable} antialiased`}>
+        <Analytics />
         <SessionProvider>
           <QueryProvider>{children}</QueryProvider>
         </SessionProvider>
